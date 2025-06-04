@@ -118,7 +118,7 @@ export default function Home() {
           }}
           whileHover={{ scale: 1.05, rotate: 2 }}
         >
-          <Image src="/my-image.jpg" alt="My image" width={500} height={300} />
+          <Image src="/chazel.png" alt="My image" width={500} height={300} />
         </motion.div>
       </section>
 
