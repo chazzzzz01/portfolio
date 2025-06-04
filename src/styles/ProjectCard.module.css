@@ -1,5 +1,5 @@
 .card {
-  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  background: linear-gradient(135deg, #0b2749, #293245);
   padding: 24px;
   border-radius: 12px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
@@ -11,18 +11,18 @@
 
 .card:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(24, 17, 53, 0.15);
 }
 
 .card h3 {
   margin: 0 0 10px;
   font-size: 22px;
-  color: #222;
+  color: #ffffff;
 }
 
 .card p {
   flex-grow: 1;
-  color: #555;
+  color: #e2e2e2;
   margin-bottom: 15px;
 }
 
