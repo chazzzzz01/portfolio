@@ -5,6 +5,7 @@ import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
 import { FaEnvelope, FaFacebook, FaLinkedin, FaGithub } from 'react-icons/fa';
+import Image from 'next/image';
 
 // Updated dark background (Borderless style)
 const darkBackground = {
@@ -75,7 +76,7 @@ export default function Home() {
             }}
           >
             <span className="typing-text">
-              Hello, I'm Chazel G. Honrejas!
+              Hello, I&apos;m Chazel G. Honrejas!
             </span>
           </motion.h1>
 
@@ -117,11 +118,7 @@ export default function Home() {
           }}
           whileHover={{ scale: 1.05, rotate: 2 }}
         >
-          <img
-            src="/chazel.png"
-            alt="Chazel"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
+          <Image src="/my-image.jpg" alt="My image" width={500} height={300} />
         </motion.div>
       </section>
 
@@ -162,7 +159,8 @@ export default function Home() {
             color: '#A1A1AA',
           }}
         >
-          I’m a tech enthusiast with a deep love for creating digital things. Whether it's building web apps or experimenting with creative ideas, I'm always eager to learn. I also love painting, sketching, and making music.
+          I&apos;m a tech enthusiast with a deep love for creating digital things. Whether it&apos;s building web apps or experimenting with creative ideas, 
+          I&apos;m always eager to learn. I also love painting, sketching, and making music.
         </motion.p>
 
         <motion.div
@@ -301,7 +299,7 @@ export default function Home() {
         transition={{ duration: 0.8, delay: 0.2 }}
         style={{ fontSize: '1.2rem', maxWidth: 600, margin: '0 auto 40px', color: '#A1A1AA' }}
       >
-        I'm always excited to collaborate on interesting projects! Feel free to reach out:
+        I&apos;m always excited to collaborate on interesting projects! Feel free to reach out:
       </motion.p>
 
       <form
