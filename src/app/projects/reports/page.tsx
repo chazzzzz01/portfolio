@@ -8,73 +8,109 @@ import Image from 'next/image';
 const allProjects = {
   Informant: [
     {
-      title: 'Home',
-      description: 'A system for managing reports efficiently.',
+      title: 'Informant Home',
+      description: 'Where they can click the informant button for loggin in if they already have an account',
       image: '/images/front.png',
     },
     {
       title: 'Informant Registration',
-      description: 'Language translation for medical settings.',
+      description: 'Register if they are new to the system.',
       image: '/images/registration.png',
     },
     {
       title: 'Informant Registration 2',
-      description: 'Organize your daily tasks smartly.',
+      description: 'Complete their registration with additional details.',
       image: '/images/registration1.png',
     },
     {
       title: 'Informant Logging In',
-      description: 'Shop everything online with ease.',
+      description: 'Login page for informants.',
       image: '/images/login.png',
     },
     {
       title: 'Informant Profile',
-      description: 'Real-time messaging platform.',
+      description: 'show informant profile with their details.',
       image: '/images/profile.png',
     },
     {
       title: 'Lodging Reports and Complaints',
-      description: 'Personal website with animation.',
+      description: 'Lodge reports and complaints easily.',
       image: '/images/lodge.png',
     },
     {
       title: 'Informant Status',
-      description: 'Track your expenses and income.',
+      description: 'Track the status of the reports and complaints.',
       image: '/images/status.png',
     },
     {
       title: 'Informant History',
-      description: 'Create blog posts using AI.',
+      description: 'Solved reports and complaints history.',
       image: '/images/history.png',
     },
     {
       title: 'Informant Message',
-      description: 'Get live weather updates.',
+      description: 'Recieved message from the offices',
       image: '/images/message.png',
     },
   ],
   Administrator: [
     {
-      title: 'Home',
-      description: 'A system for managing reports efficiently.',
+      title: 'Admin Home',
+      description: 'Where administrator click the admin button for logging in.',
       image: '/images/front.png',
     },
     {
-      title: 'Admin Dashboard',
-      description: 'Monitor reports and manage users.',
-      image: '/images/admin_dashboard.png',
+      title: 'Admin Logging In',
+      description: 'Login page for administrators.',
+      image: '/images/login1.png',
     },
+    {
+      title: 'Admin Reports',
+      description: 'Monitor reports and manage users.',
+      image: '/images/report.png',
+    },
+    {
+      title: 'Admin Complaints',
+      description: 'Monitor complaints and manage users.',
+      image: '/images/complaint.png',
+    },
+    {
+      title: 'Admin History',
+      description: 'Solved reports and complaints history.',
+      image: '/images/history1.png',
+    },
+    
   ],
   Offices: [
     {
-      title: 'Office Dashboard',
-      description: 'Handle complaints per office type.',
-      image: '/images/office_dashboard.png',
+      title: 'Offices Home',
+      description: 'Where offices can click the office button for logging in.',
+      image: '/images/front.png',
     },
     {
-      title: 'Office Report View',
+      title: 'Offices Logging In',
+      description: 'Login page for offices.',
+      image: '/images/office_login.png',
+    },
+    {
+      title: 'Offices Dashboard',
+      description: 'Provide an overview of the reports and complaints recieved by the offices.',
+      image: '/images/dashboard1.png',
+    },
+    {
+      title: 'Offices Reports',
       description: 'Detailed view of assigned reports.',
-      image: '/images/office_report.png',
+      image: '/images/report1.png',
+    },
+    {
+      title: 'Offices Complaints',
+      description: 'Detailed view of assigned complaints.',
+      image: '/images/complaint1.png',
+    },
+    {
+      title: 'Offices Message',
+      description: 'Send messages to informants regarding their reports and complaints.',
+      image: '/images/complaint1.png',
     },
   ],
 };
