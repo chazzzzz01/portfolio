@@ -4,11 +4,12 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { FaGithub, FaEnvelope, FaFacebook, FaLinkedin } from 'react-icons/fa';
-import React from 'react'; 
+import React from 'react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState('');
+  const [loading, setLoading] = useState(false); // 👈 loading state
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,6 +17,8 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setStatus('');
 
     try {
       await emailjs.send(
@@ -30,13 +33,13 @@ export default function Contact() {
         'VW5-ZhcODETeG7o5f'
       );
 
-  
-
       setStatus('Message sent successfully!');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
       setStatus('Failed to send message. Please try again later.');
       console.error('EmailJS Error:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -121,14 +124,21 @@ export default function Contact() {
           onChange={handleChange}
           style={textareaStyle}
         />
+
         <motion.button
-          whileHover={{ scale: 1.05, boxShadow: '0px 0px 12px rgba(99, 102, 241, 0.6)' }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={!loading ? { scale: 1.05, boxShadow: '0px 0px 12px rgba(99, 102, 241, 0.6)' } : {}}
+          whileTap={!loading ? { scale: 0.95 } : {}}
           type="submit"
-          style={buttonStyle}
+          disabled={loading}
+          style={{
+            ...buttonStyle,
+            cursor: loading ? 'not-allowed' : 'pointer',
+            opacity: loading ? 0.7 : 1,
+          }}
         >
-          Send Message
+          {loading ? 'Sending...' : 'Send Message'}
         </motion.button>
+
         {status && <p style={{ color: '#7bdcb5', marginTop: '10px' }}>{status}</p>}
       </form>
 
@@ -189,6 +199,7 @@ export default function Contact() {
   );
 }
 
+// Styles
 const inputStyle = {
   padding: '12px 16px',
   borderRadius: '8px',
@@ -211,6 +222,5 @@ const buttonStyle = {
   fontSize: '1rem',
   border: 'none',
   borderRadius: '8px',
-  cursor: 'pointer',
   transition: '0.3s ease',
 };

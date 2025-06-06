@@ -3,6 +3,19 @@
   background-color: hsl(240, 25.3%, 19.4%);
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hamburger {
+  position: absolute;
+  left: 20px;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  display: none;
 }
 
 .nav {
@@ -22,12 +35,11 @@
 /* Glow effect on hover and focus */
 .nav a:hover,
 .nav a:focus {
-  color: #66b2ff; /* soft blue */
+  color: #66b2ff;
   text-shadow: 0 0 5px #66b2ff, 0 0 10px #66b2ff, 0 0 15px #66b2ff;
   outline: none;
 }
 
-/* Optional: smooth underline */
 .nav a::after {
   content: '';
   position: absolute;
@@ -45,4 +57,27 @@
 .nav a:focus::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    background-color: hsl(240, 25.3%, 19.4%);
+    padding: 10px 20px;
+    display: none;
+    text-align: left;
+  }
+
+  .nav.open {
+    display: flex;
+  }
 }

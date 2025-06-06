@@ -118,7 +118,7 @@ export default function Home() {
           }}
           whileHover={{ scale: 1.05, rotate: 2 }}
         >
-          <Image src="/chazel.png" alt="My image" width={500} height={300} />
+          <Image src="/chazel.png" alt="My image" width={255} height={350} />
         </motion.div>
       </section>
 
@@ -191,7 +191,7 @@ export default function Home() {
         </motion.div>
       </section>
 
- {/* Projects Section */}
+{/* Projects Section */}
 <section
   style={{
     ...darkBackground,
@@ -202,6 +202,7 @@ export default function Home() {
     flexDirection: 'column',
     justifyContent: 'center',
     color: '#fff',
+    overflowY: 'auto',
   }}
 >
   <motion.h2
@@ -214,250 +215,272 @@ export default function Home() {
     Projects
   </motion.h2>
 
-  <motion.div
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8, delay: 0.2 }}
+  {/* Scrollable container */}
+  <div
     style={{
-      display: 'grid',
-      gap: '30px',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-      maxWidth: 1000,
-      margin: '0 auto',
+      overflowX: 'auto',
+      scrollSnapType: 'x mandatory',
+      WebkitOverflowScrolling: 'touch',
+      paddingBottom: '10px',
+      scrollBehavior: 'smooth',
     }}
   >
-    {[{
-      title: 'Reports and Complaints Management System',
-      description:
-        'The Report and Complaint Management System is a web app that helps users submit complaints and automatically sends them to the correct office using machine learning. It analyzes each complaint, predicts the responsible office, and shows similar past complaints to assist in handling the issue. Built with Django, it makes complaint processing faster, more efficient, and better organized.',
-    }, {
-      title: 'Healthcare Translator',
-      description:
-        'The Healthcare Translator is an app that helps patients and doctors understand each other by translating medical terms, symptoms, and instructions into different languages. It makes communication easier in hospitals and clinics, especially when people speak different languages, helping improve care and safety.',
-    }].map((project, index) => (
-      <Link
-        key={index}
-        href="/projects"
-        style={{ textDecoration: 'none', color: 'inherit' }}
-      >
-        <motion.div
-          whileHover={{ scale: 1.03 }}
-          transition={{ type: 'spring', stiffness: 200 }}
-          style={{
-            background: 'rgba(129, 30, 241, 0.2)',
-            borderRadius: '20px',
-            padding: '24px',
-            backdropFilter: 'blur(10px)',
-            boxShadow: '0 0 20px rgba(129, 30, 241, 0.4)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            minHeight: '340px',
-          }}
-        >
-          <h3 style={{ fontSize: '1.4rem', fontWeight: 600 }}>
-            {project.title}
-          </h3>
-          <p style={{ fontSize: '1rem', marginTop: '10px', color: '#E5E5E5' }}>
-            {project.description}
-          </p>
-        </motion.div>
-      </Link>
-    ))}
-  </motion.div>
-</section>
-
- <section
+    {/* Flex wrapper that allows horizontal scroll but also centers on wide screens */}
+    <div
       style={{
-        ...darkBackground,
-        color: '#fff',
-        minHeight: '100vh',
-        padding: '80px 20px',
         display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
+        gap: '20px',
+        padding: '10px',
+        width: 'max-content',
+        margin: '0 auto', // ✅ Centers on large screens
       }}
     >
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}
-      >
-        Contact Me
-      </motion.h2>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        style={{ fontSize: '1.2rem', maxWidth: 600, margin: '0 auto 40px', color: '#A1A1AA' }}
-      >
-        I&apos;m always excited to collaborate on interesting projects! Feel free to reach out:
-      </motion.p>
-
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          width: '100%',
-          maxWidth: 600,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '20px',
-          marginBottom: '40px',
-        }}
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required
-          value={formData.name}
-          onChange={handleChange}
+      {[{
+        title: 'Reports and Complaints Management System',
+        description:
+          'The Report and Complaint Management System is a web app that helps users submit complaints and automatically sends them to the correct office using machine learning. It analyzes each complaint, predicts the responsible office, and shows similar past complaints to assist in handling the issue. Built with Django, it makes complaint processing faster, more efficient, and better organized.',
+      }, {
+        title: 'Healthcare Translator',
+        description:
+          'The Healthcare Translator is an app that helps patients and doctors understand each other by translating medical terms, symptoms, and instructions into different languages. It makes communication easier in hospitals and clinics, especially when people speak different languages, helping improve care and safety.',
+      }].map((project, index) => (
+        <Link
+          key={index}
+          href="/projects"
           style={{
-            padding: '12px 16px',
-            borderRadius: '8px',
-            border: '1px solid #555',
-            background: '#1e1e2f',
-            color: '#fff',
-            fontSize: '1rem',
-          }}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-          value={formData.email}
-          onChange={handleChange}
-          style={{
-            padding: '12px 16px',
-            borderRadius: '8px',
-            border: '1px solid #555',
-            background: '#1e1e2f',
-            color: '#fff',
-            fontSize: '1rem',
-          }}
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          rows={6}
-          required
-          value={formData.message}
-          onChange={handleChange}
-          style={{
-            padding: '12px 16px',
-            borderRadius: '8px',
-            border: '1px solid #555',
-            background: '#1e1e2f',
-            color: '#fff',
-            fontSize: '1rem',
-            resize: 'none',
-          }}
-        />
-       <motion.button
-          whileHover={{ scale: 1.05, boxShadow: '0px 0px 12px rgba(99, 102, 241, 0.6)' }}
-          whileTap={{ scale: 0.95 }}
-          type="submit"
-          style={{
-            padding: '12px 20px',
-            background: 'linear-gradient(to right, #4F46E5, #6366F1)',
-            color: '#fff',
-            fontWeight: 600,
-            fontSize: '1rem',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer',
-            transition: '0.3s ease',
+            textDecoration: 'none',
+            color: 'inherit',
+            scrollSnapAlign: 'start',
+            flex: '0 0 auto',
+            minWidth: '300px', // ✅ Ensures full visibility on scroll
           }}
         >
-          Send Message
-        </motion.button>
-       
-      </form>
-
-
-      {status && (
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          style={{ color: '#7bdcb5', fontWeight: 600, marginBottom: '30px' }}
-        >
-          {status}
-        </motion.p>
-      )}
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        style={{ fontSize: '1.1rem', marginBottom: '40px' }}
-      >
-       
-      </motion.div>
-
-      {/* Social Icons */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-        style={{
-          marginTop: '20px',
-          display: 'flex',
-          gap: '20px',
-          justifyContent: 'center',
-        }}
-      >
-        {[
-          {
-            icon: <FaEnvelope size={40} />,
-            url: 'https://mail.google.com/mail/?view=cm&fs=1&to=chazelhonrejas02@gmail.com',
-            color: '#D14836',
-          },
-          {
-            icon: <FaFacebook size={40} />,
-            url: 'https://www.facebook.com/share/1AHhDbCrRa/',
-            color: '#1877F2',
-          },
-          {
-            icon: <FaLinkedin size={40} />,
-            url: 'https://www.linkedin.com/in/chaz-honrejas-33bb3b351/',
-            color: '#0A66C2',
-          },
-          {
-            icon: <FaGithub size={40} />,
-            url: 'https://github.com/chazzzzz01',
-            color: '#fff',
-          },
-        ].map(({ icon, url, color }, idx) => (
-          <motion.a
-            key={idx}
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{
-              scale: 1.2,
-              boxShadow: `0 0 12px ${color}`,
-            }}
-            whileTap={{ scale: 0.9 }}
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: 'spring', stiffness: 200 }}
             style={{
-              color,
-              transition: 'all 0.3s ease',
+              background: 'rgba(129, 30, 241, 0.2)',
+              borderRadius: '20px',
+              padding: '24px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 0 20px rgba(129, 30, 241, 0.4)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              width: '300px',
+              minHeight: '340px',
+              height: 'auto',
+              boxSizing: 'border-box',
             }}
           >
-            {icon}
-          </motion.a>
-        ))}
-      </motion.div>
-    </section>
-  </>
-  );
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 600 }}>
+              {project.title}
+            </h3>
+            <p style={{
+              fontSize: '1rem',
+              marginTop: '10px',
+              color: '#E5E5E5',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              display: '-webkit-box',
+              WebkitLineClamp: 6,
+              WebkitBoxOrient: 'vertical',
+            }}>
+              {project.description}
+            </p>
+          </motion.div>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* Contact Section */}
+<section
+  style={{
+    ...darkBackground,
+    color: '#fff',
+    minHeight: '100vh',
+    padding: '80px 20px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+  }}
+>
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.8 }}
+    style={{ width: '100%', maxWidth: 600 }}
+  >
+    <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
+      Contact Me
+    </h2>
+
+    <p
+      style={{
+        fontSize: '1.2rem',
+        maxWidth: 600,
+        margin: '0 auto 40px',
+        color: '#A1A1AA',
+      }}
+    >
+      I&apos;m always excited to collaborate on interesting projects! Feel free to reach out:
+    </p>
+
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+        marginBottom: '40px',
+      }}
+    >
+      <input
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        required
+        value={formData.name}
+        onChange={handleChange}
+        style={{
+          padding: '12px 16px',
+          borderRadius: '8px',
+          border: '1px solid #555',
+          background: '#1e1e2f',
+          color: '#fff',
+          fontSize: '1rem',
+        }}
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Your Email"
+        required
+        value={formData.email}
+        onChange={handleChange}
+        style={{
+          padding: '12px 16px',
+          borderRadius: '8px',
+          border: '1px solid #555',
+          background: '#1e1e2f',
+          color: '#fff',
+          fontSize: '1rem',
+        }}
+      />
+      <textarea
+        name="message"
+        placeholder="Your Message"
+        rows={6}
+        required
+        value={formData.message}
+        onChange={handleChange}
+        style={{
+          padding: '12px 16px',
+          borderRadius: '8px',
+          border: '1px solid #555',
+          background: '#1e1e2f',
+          color: '#fff',
+          fontSize: '1rem',
+          resize: 'none',
+        }}
+      />
+      <motion.button
+        whileHover={{
+          scale: 1.05,
+          boxShadow: '0px 0px 12px rgba(99, 102, 241, 0.6)',
+        }}
+        whileTap={{ scale: 0.95 }}
+        type="submit"
+        style={{
+          padding: '12px 20px',
+          background: 'linear-gradient(to right, #4F46E5, #6366F1)',
+          color: '#fff',
+          fontWeight: 600,
+          fontSize: '1rem',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          transition: '0.3s ease',
+        }}
+      >
+        Send Message
+      </motion.button>
+    </form>
+
+    {status && (
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        style={{ color: '#7bdcb5', fontWeight: 600, marginBottom: '30px' }}
+      >
+        {status}
+      </motion.p>
+    )}
+
+    {/* Social Icons */}
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.5 }}
+      style={{
+        marginTop: '20px',
+        display: 'flex',
+        gap: '20px',
+        justifyContent: 'center',
+      }}
+    >
+      {[
+        {
+          icon: <FaEnvelope size={40} />,
+          url: 'https://mail.google.com/mail/?view=cm&fs=1&to=chazelhonrejas02@gmail.com',
+          color: '#D14836',
+        },
+        {
+          icon: <FaFacebook size={40} />,
+          url: 'https://www.facebook.com/share/1AHhDbCrRa/',
+          color: '#1877F2',
+        },
+        {
+          icon: <FaLinkedin size={40} />,
+          url: 'https://www.linkedin.com/in/chaz-honrejas-33bb3b351/',
+          color: '#0A66C2',
+        },
+        {
+          icon: <FaGithub size={40} />,
+          url: 'https://github.com/chazzzzz01',
+          color: '#fff',
+        },
+      ].map(({ icon, url, color }, idx) => (
+        <motion.a
+          key={idx}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{
+            scale: 1.2,
+            boxShadow: `0 0 12px ${color}`,
+          }}
+          whileTap={{ scale: 0.9 }}
+          style={{
+            color,
+            transition: 'all 0.3s ease',
+          }}
+        >
+          {icon}
+        </motion.a>
+      ))}
+    </motion.div>
+  </motion.div>
+</section>
+</>
+  )
 }

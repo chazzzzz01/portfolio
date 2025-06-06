@@ -2,18 +2,19 @@
 
 import ProjectCard from '../../components/ProjectCard';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const projects = [
   {
     title: 'Reports and Complaints Management System',
     description: 'An amazing project that does wonderful things.',
-    link: 'https://github.com/chazzzzz01/ARCS',
+    link: '/projects/reports', // local route
     bgColor: 'bg-gradient-to-br from-cyan-500 to-blue-500',
   },
   {
-    title: 'Helathcare Translator',
+    title: 'Healthcare Translator',
     description: 'Another fantastic project with great features.',
-    link: 'https://github.com/yourusername/project-two',
+    link: '/projects/translator', // another example
     bgColor: 'bg-gradient-to-br from-purple-500 to-indigo-500',
   },
 ];
@@ -77,7 +78,6 @@ export default function Projects() {
               padding: '24px',
               boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
               border: '1px solid rgba(255,255,255,0.1)',
-              cursor: 'pointer',
               flex: '1 1 350px',
               color: '#fff',
               background:
@@ -89,20 +89,37 @@ export default function Projects() {
               justifyContent: 'space-between',
               userSelect: 'none',
             }}
-            onClick={() => window.open(project.link, '_blank')}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                window.open(project.link, '_blank');
-              }
-            }}
           >
             <ProjectCard
               title={project.title}
               description={project.description}
               link={project.link}
             />
+            <div style={{ marginTop: '16px', textAlign: 'right' }}>
+              <Link href={project.link}>
+                <span
+                  style={{
+                    color: '#fff',
+                    backgroundColor: '#2563EB',
+                    padding: '8px 16px',
+                    borderRadius: '8px',
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                    transition: 'background-color 0.3s ease',
+                    display: 'inline-block',
+                    cursor: 'pointer',
+                  }}
+                  onMouseOver={(e) => {
+                    (e.target as HTMLSpanElement).style.backgroundColor = '#1D4ED8';
+                  }}
+                  onMouseOut={(e) => {
+                    (e.target as HTMLSpanElement).style.backgroundColor = '#2563EB';
+                  }}
+                >
+                  Read More →
+                </span>
+              </Link>
+            </div>
           </motion.div>
         ))}
       </div>
