@@ -125,6 +125,19 @@ const icons = {
       </text>
     </svg>
   ),
+
+  tailwind: (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="#38B2AC"
+    viewBox="0 0 24 24"
+    width="36"
+    height="36"
+  >
+    <path d="M12 6.5c-2.667 0-4.333 1.333-5 4 1-1.333 2.167-1.833 3.5-1.5.764.18 1.318.734 1.757 1.236.497.565.925 1.052 1.743 1.264C16.548 11.964 18.161 10.81 18.5 9c-.667 2.667-2.333 4-5 4-1.6 0-2.5-.733-3.5-2.2C9.16 9.154 8.28 8.456 7 8.5c1-2.667 2.667-4 5-4z" />
+  </svg>
+),
+
   postgresql: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -235,6 +248,7 @@ export default function About() {
           { name: 'HTML', icon: icons.html },
           { name: 'CSS', icon: icons.css },
           { name: 'JavaScript', icon: icons.javascript },
+          { name: 'Tailwind CSS', icon: icons.tailwind },
           { name: 'PostgreSQL', icon: icons.postgresql },
         ].map(({ name, icon }) => (
           <div
@@ -265,7 +279,39 @@ export default function About() {
             </span>
           </div>
         ))}
+
       </motion.section>
+
+
+      {/* Experience Section */}
+<motion.section
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8, delay: 0.4 }}
+  style={{
+    maxWidth: '700px',
+    marginBottom: '40px',
+    padding: '20px',
+    borderLeft: '5px solid #007BFF',
+    textAlign: 'left',
+    color: '#FFF',
+  }}
+>
+  <h3
+    style={{
+      fontSize: '1.8rem',
+      marginBottom: '12px',
+      color: '#007BFF',
+    }}
+  >
+    💼 Internship Experience — CVISNET Foundation Inc.
+  </h3>
+  <p style={{ fontSize: '1.1rem', lineHeight: 1.6 }}>
+    During my internship at <strong>CVISNET Foundation Inc.</strong>, I was introduced to real-world web development practices. I learned how to build websites using WordPress and troubleshoot issues using PHP. I also contributed to some internal projects, where I helped configure site features and polish UI elements. One highlight was creating and presenting a personal WordPress project, which allowed me to apply everything I learned in a practical setting. This experience solidified my passion for development and gave me valuable insights into collaborative work environments.
+  </p>
+</motion.section>
+
 
       {/* Life & Journey */}
       <motion.section

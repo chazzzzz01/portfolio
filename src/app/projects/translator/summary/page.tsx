@@ -2,7 +2,7 @@ import React from 'react';
 import { FaFileAlt, FaUsers, FaTools, FaCogs, FaGithub } from 'react-icons/fa';
 
 export default function HealthcareTranslatorPage() {
-  const githubUrl = 'https://github.com/chazzzzz01/translation'; 
+  const githubUrl = 'https://github.com/chazzzzz01/translation';
 
   return (
     <div
@@ -17,6 +17,7 @@ export default function HealthcareTranslatorPage() {
         alignItems: 'center',
         justifyContent: 'center',
         animation: 'fadeIn 1.5s ease-in-out',
+        boxSizing: 'border-box',
       }}
     >
       <style>
@@ -25,21 +26,26 @@ export default function HealthcareTranslatorPage() {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
           }
+
           .highlight {
             color: rgb(42, 61, 233);
             font-weight: 600;
           }
+
           .section {
             width: 800px;
             max-width: 100%;
-            box-sizing: border-box;
             background: #2a2a3e;
             border-radius: 12px;
             padding: 2rem;
             margin: 1rem 0;
             box-shadow: 0 0 10px rgba(31, 65, 232, 0.6);
             line-height: 1.6;
+            box-sizing: border-box;
+            word-break: break-word;
+            overflow-wrap: break-word;
           }
+
           h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -50,7 +56,9 @@ export default function HealthcareTranslatorPage() {
             align-items: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+            word-break: break-word;
           }
+
           h2 {
             color: rgb(47, 50, 247);
             margin-bottom: 0.5rem;
@@ -58,20 +66,27 @@ export default function HealthcareTranslatorPage() {
             align-items: center;
             gap: 0.6rem;
             flex-wrap: wrap;
+            word-break: break-word;
           }
-          p {
+
+          p, li {
             margin-bottom: 1rem;
+            font-size: 1rem;
+            word-break: break-word;
+            overflow-wrap: break-word;
           }
+
           ul {
             margin-left: 1.2rem;
             padding-left: 1rem;
           }
+
           li {
-            margin-bottom: 0.4rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.5rem;
           }
+
           .github-link {
             margin-top: 2rem;
             color: #2a3dd9;
@@ -79,8 +94,17 @@ export default function HealthcareTranslatorPage() {
             cursor: pointer;
             transition: color 0.3s ease;
           }
+
           .github-link:hover {
             color: #4ade80;
+          }
+
+          code {
+            background-color: #333;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            word-break: break-all;
           }
 
           @media screen and (max-width: 768px) {
@@ -124,19 +148,18 @@ export default function HealthcareTranslatorPage() {
       <div className="section">
         <h2><FaUsers /> Users of the System</h2>
         <ul>
-          <li><span className="highlight">Healthcare Workers</span>  Can translate medical instructions or questions for patients in their native language.</li>
-          <li><span className="highlight">Patients</span>  Receive accurate translations of languages and have better communication to understand their care.</li>
+          <li><span className="highlight">Healthcare Workers</span> – Can translate medical instructions or questions for patients in their native language.</li>
+          <li><span className="highlight">Patients</span> – Receive accurate translations of languages and have better communication to understand their care.</li>
         </ul>
       </div>
 
       <div className="section">
         <h2><FaTools /> Technologies Used</h2>
         <ul>
-          <li><span className="highlight">Django + Django REST Framework</span>  for the backend API.</li>
-          <li><span className="highlight">GoogleTranslator</span> (via deep translator)  for instant, accurate multilingual translation.</li>
-          <li><span className="highlight">OpenAI API</span>  to generate text-to-speech (TTS) audio output for translated text.</li>
-          <li><span className="highlight">HTML/CSS (Responsive)</span>  for a clean, mobile-ready frontend template.</li>
-          
+          <li><span className="highlight">Django + Django REST Framework</span> – for the backend API.</li>
+          <li><span className="highlight">GoogleTranslator</span> (via deep translator) – for instant, accurate multilingual translation.</li>
+          <li><span className="highlight">OpenAI API</span> – to generate text-to-speech (TTS) audio output for translated text.</li>
+          <li><span className="highlight">HTML/CSS (Responsive)</span> – for a clean, mobile-ready frontend template.</li>
         </ul>
       </div>
 

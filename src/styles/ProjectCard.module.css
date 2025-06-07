@@ -8,7 +8,7 @@
   flex-direction: column;
   justify-content: flex-start; /* changed from space-between */
   width: 100%;         /* fills container */         /* fixed width to match report/complaint card */
-  height: 700px;    /* minimum height */
+  height: 100%;    /* minimum height */
   box-sizing: border-box;
   max-height: none;    /* remove fixed max-height */
   overflow: visible;   /* allow overflow if needed */

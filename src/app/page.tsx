@@ -59,7 +59,7 @@ export default function Home() {
           </motion.h1>
 
           <motion.p style={{ fontSize: '1.5rem', fontWeight: 300, marginBottom: '20px', color: '#3B82F6' }}>
-            A passionate developer crafting elegant and functional web experiences.
+            A passionate and curious developer who&apos;s always eager to learn more and push my skills to the next level.
           </motion.p>
 
           <motion.button
@@ -137,8 +137,8 @@ export default function Home() {
             color: '#A1A1AA',
           }}
         >
-          I&apos;m a tech enthusiast with a deep love for creating digital things. Whether it&apos;s building web apps or experimenting with creative ideas, 
-          I&apos;m always eager to learn. I also love painting, sketching, and making music.
+         I&apos;m a tech enthusiast who loves trying everything from building web apps to experimenting with new ideas, especially in web development. 
+         I&apos;m always eager to learn and explore how things work. Outside of tech, I enjoy painting, sketching, playing games and making music.
         </motion.p>
 
         <motion.div

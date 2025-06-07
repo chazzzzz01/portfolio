@@ -2,12 +2,13 @@ import React from 'react';
 import { FaFileAlt, FaUsers, FaTools, FaCogs, FaGithub } from 'react-icons/fa';
 
 export default function ReportsSummaryPage() {
-  const githubUrl = 'https://github.com/chazzzzz01/ARCS'; // Change to your actual GitHub URL
+  const githubUrl = 'https://github.com/chazzzzz01/ARCS';
 
   return (
     <div
       style={{
         padding: '2rem',
+        paddingTop: '4rem',
         color: '#fff',
         backgroundColor: '#1e1e2f',
         minHeight: '100vh',
@@ -15,8 +16,10 @@ export default function ReportsSummaryPage() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        animation: 'fadeIn 1.5s ease-in-out',
+        justifyContent: 'flex-start',
+        boxSizing: 'border-box',
+        width: '100%',
+        overflowX: 'hidden',
       }}
     >
       <style>
@@ -25,6 +28,9 @@ export default function ReportsSummaryPage() {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
           }
+          * {
+            box-sizing: border-box;
+          }
           .highlight {
             color: rgb(42, 61, 233);
             font-weight: 600;
@@ -32,13 +38,18 @@ export default function ReportsSummaryPage() {
           .section {
             width: 800px;
             max-width: 100%;
-            box-sizing: border-box;
             background: #2a2a3e;
             border-radius: 12px;
             padding: 2rem;
             margin: 1rem 0;
             box-shadow: 0 0 10px rgba(31, 65, 232, 0.6);
             line-height: 1.6;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+          }
+          h1, h2, p, li, ul {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
           }
           h1 {
             font-size: 2.5rem;
@@ -98,6 +109,10 @@ export default function ReportsSummaryPage() {
               font-size: 1.25rem;
             }
 
+            p, li {
+              font-size: 0.95rem;
+            }
+
             .github-link {
               font-size: 2rem;
             }
@@ -122,19 +137,19 @@ export default function ReportsSummaryPage() {
         <ul>
           <li><span className="highlight">Informants</span> – Users who submit reports and complaints.</li>
           <li><span className="highlight">Administrators (Legal Office)</span> – Oversee the processing and resolution of complaints.</li>
-          <li><span className="highlight">Office Departments</span> – Such as VP for Administration & Finance, Academic Affairs, Student Affairs, and the GAD Office, responsible for addressing routed submissions.</li>
+          <li><span className="highlight">Office Departments</span> – Such as VP for Administration & Finance, Academic Affairs, Student Affairs, and the GAD Office.</li>
         </ul>
       </div>
 
       <div className="section">
         <h2><FaTools /> How We Built It</h2>
         <ul>
-          <li>Collected actual reports and generated additional keyword-based synthetic data.</li>
-          <li>Preprocessed text by removing punctuation and stopwords, and applied lemmatization.</li>
-          <li>Defined keyword lists per department to guide the machine learning classification.</li>
-          <li>Vectorized descriptions using TF-IDF to prepare data for model training.</li>
-          <li>Trained separate Naive Bayes models for predicting the <span className="highlight">category</span> and <span className="highlight">type</span> of each submission.</li>
-          <li>Integrated cosine similarity checks to enhance prediction reliability by comparing with existing cases.</li>
+          <li>- Collected actual reports and generated additional keyword-based synthetic data.</li>
+          <li>- Preprocessed text by removing punctuation and stopwords, and applied lemmatization.</li>
+          <li>- Defined keyword lists per department to guide the machine learning classification.</li>
+          <li>- Vectorized descriptions using TF-IDF to prepare data for model training.</li>
+          <li>- Trained separate Naive Bayes models for predicting the category and type of each submission.</li>
+          <li>- Integrated cosine similarity checks to enhance prediction reliability by comparing with existing cases.</li>
         </ul>
       </div>
 
@@ -147,7 +162,6 @@ export default function ReportsSummaryPage() {
           <li><span className="highlight">spaCy / NLTK</span> – Text preprocessing (lemmatization, stopword removal).</li>
           <li><span className="highlight">CSS / Tailwind</span> – Custom styling and layout.</li>
           <li><span className="highlight">Cosine Similarity</span> – For semantic comparison with historical data.</li>
-          
         </ul>
       </div>
 
@@ -172,4 +186,3 @@ export default function ReportsSummaryPage() {
     </div>
   );
 }
-
