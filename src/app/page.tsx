@@ -193,8 +193,12 @@ export default function Home() {
     Projects
   </motion.h2>
 
-  {/* Scrollable container */}
-  <div
+  {/* Scrollable container that fades in when in view */}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, delay: 0.2 }}
     style={{
       overflowX: 'auto',
       scrollSnapType: 'x mandatory',
@@ -211,7 +215,7 @@ export default function Home() {
         gap: '20px',
         padding: '10px',
         width: 'max-content',
-        margin: '0 auto', // centers on large screens
+        margin: '0 auto',
       }}
     >
       {[
@@ -219,13 +223,13 @@ export default function Home() {
           title: 'Reports and Complaints Management System',
           description:
             'An ML-powered tool that classifies and routes reports to the right department, improving complaint resolution and accountability in organizations.',
-          icon: <FiClipboard size={40} color="#34D399" style={{ margin: '16px 0' }} />, // teal clipboard icon
+          icon: <FiClipboard size={40} color="#34D399" style={{ margin: '16px 0' }} />,
         },
         {
           title: 'Healthcare Translator',
           description:
             'A translation tool designed for healthcare settings to bridge language gaps between professionals and patients.',
-          icon: <FiMessageCircle size={40} color="#60A5FA" style={{ margin: '16px 0' }} />, // blue chat icon
+          icon: <FiMessageCircle size={40} color="#60A5FA" style={{ margin: '16px 0' }} />,
         },
       ].map((project, index) => (
         <Link
@@ -236,7 +240,7 @@ export default function Home() {
             color: 'inherit',
             scrollSnapAlign: 'start',
             flex: '0 0 auto',
-            minWidth: '300px', // ensures full visibility on scroll
+            minWidth: '300px',
           }}
         >
           <motion.div
@@ -261,10 +265,7 @@ export default function Home() {
             }}
           >
             <h3 style={{ fontSize: '1.4rem', fontWeight: 600 }}>{project.title}</h3>
-
-            {/* Icon centered */}
             {project.icon}
-
             <p
               style={{
                 fontSize: '1rem',
@@ -283,8 +284,9 @@ export default function Home() {
         </Link>
       ))}
     </div>
-  </div>
+  </motion.div>
 </section>
+
 
 {/* Contact Section */}
 <section
