@@ -16,6 +16,7 @@
   color: white;
   cursor: pointer;
   display: none;
+  z-index: 9999;  /* <-- Add this */
 }
 
 .nav {
@@ -78,6 +79,7 @@
   }
 
   .nav.open {
-    display: flex;
-  }
+  display: flex;
+  z-index: 9998;
+}
 }

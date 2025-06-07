@@ -7,14 +7,14 @@ import Link from 'next/link';
 const projects = [
   {
     title: 'Reports and Complaints Management System',
-    description: 'An amazing project that does wonderful things.',
-    link: '/projects/reports', // local route
+    description: 'The Report and Complaint Management System is a software tool designed to help organizations handle reports and complaints more efficiently. Its main purpose is to automatically classify and route incoming reports or complaints to the right department within an organization, so that issues can be addressed faster and more effectively.Instead of manually sorting through complaints, this system uses machine learning to analyze the content of each submission, determine its category, and send it to the appropriate office or team responsible for handling that type of issue. This helps improve accountability, transparency, and the overall resolution process by making sure nothing gets lost or delayed. In short, it simplifies and speeds up how organizations manage feedback, problems, or violations reported by users, employees, or customers, ensuring timely and proper responses.',
+    link: '/projects/reports',
     bgColor: 'bg-gradient-to-br from-cyan-500 to-blue-500',
   },
   {
     title: 'Healthcare Translator',
-    description: 'Another fantastic project with great features.',
-    link: '/projects/translator', // another example
+    description: 'The Healthcare Translator is a simple web app made to help doctors and patients understand each other when they don’t speak the same language. In hospitals or clinics, language barriers can cause serious problems like wrong diagnoses or confusion about treatments. This tool solves that by quickly translating messages between healthcare workers and patients. It was built using Django and Django REST Framework for the backend, with Google Translate (through the deep translator library) doing the actual translations. The app also uses OpenAI’s text-to-speech feature, which lets users hear the translated message out loud this is especially helpful for people who can’t read well or don’t know how their language is written.',
+    link: '/projects/translator',
     bgColor: 'bg-gradient-to-br from-purple-500 to-indigo-500',
   },
 ];
@@ -66,62 +66,71 @@ export default function Projects() {
         }}
       >
         {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.15 }}
-            whileHover={{ scale: 1.05, boxShadow: '0 8px 20px rgba(123, 220, 181, 0.6)' }}
-            style={{
-              borderRadius: '16px',
-              padding: '24px',
-              boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              flex: '1 1 350px',
-              color: '#fff',
-              background:
-                project.bgColor === 'bg-gradient-to-br from-cyan-500 to-blue-500'
-                  ? 'linear-gradient(135deg, #06b6d4, #3b82f6)'
-                  : 'linear-gradient(135deg, #8b5cf6, #4f46e5)',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              userSelect: 'none',
-            }}
-          >
-            <ProjectCard
-              title={project.title}
-              description={project.description}
-              link={project.link}
-            />
-            <div style={{ marginTop: '16px', textAlign: 'right' }}>
-              <Link href={project.link}>
-                <span
-                  style={{
-                    color: '#fff',
-                    backgroundColor: '#2563EB',
-                    padding: '8px 16px',
-                    borderRadius: '8px',
-                    textDecoration: 'none',
-                    fontWeight: 600,
-                    transition: 'background-color 0.3s ease',
-                    display: 'inline-block',
-                    cursor: 'pointer',
-                  }}
-                  onMouseOver={(e) => {
-                    (e.target as HTMLSpanElement).style.backgroundColor = '#1D4ED8';
-                  }}
-                  onMouseOut={(e) => {
-                    (e.target as HTMLSpanElement).style.backgroundColor = '#2563EB';
-                  }}
-                >
-                  Read More →
-                </span>
-              </Link>
-            </div>
-          </motion.div>
-        ))}
+  <motion.div
+    key={index}
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: index * 0.15 }}
+    whileHover={{ scale: 1.05, boxShadow: '0 8px 20px rgba(123, 220, 181, 0.6)' }}
+    style={{
+      borderRadius: '16px',
+      padding: '24px',
+      boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+      border: '1px solid rgba(255,255,255,0.1)',
+      color: '#fff',
+      background:
+        project.bgColor === 'bg-gradient-to-br from-cyan-500 to-blue-500'
+          ? 'linear-gradient(135deg, #06b6d4, #3b82f6)'
+          : 'linear-gradient(135deg, #8b5cf6, #4f46e5)',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      width: '100%',
+      maxWidth: '400px',
+      height: 'auto',
+      minHeight: '280px',
+      wordBreak: 'break-word',
+      userSelect: 'none',
+    }}
+  >
+    <Link href={`${project.link}/summary`} style={{ textDecoration: 'none', color: 'inherit' }}>
+      <div>
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+        />
+      </div>
+    </Link>
+
+    <div style={{ marginTop: '16px', textAlign: 'right' }}>
+      <Link href={project.link}>
+        <span
+          style={{
+            color: '#fff',
+            backgroundColor: '#2563EB',
+            padding: '8px 16px',
+            borderRadius: '8px',
+            textDecoration: 'none',
+            fontWeight: 600,
+            transition: 'background-color 0.3s ease',
+            display: 'inline-block',
+            cursor: 'pointer',
+          }}
+          onMouseOver={(e) => {
+            (e.target as HTMLSpanElement).style.backgroundColor = '#1D4ED8';
+          }}
+          onMouseOut={(e) => {
+            (e.target as HTMLSpanElement).style.backgroundColor = '#2563EB';
+          }}
+        >
+          Read More →
+        </span>
+      </Link>
+    </div>
+  </motion.div>
+))}
+
       </div>
     </motion.section>
   );

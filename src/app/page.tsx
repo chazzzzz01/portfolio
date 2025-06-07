@@ -5,6 +5,7 @@ import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
 import { FaEnvelope, FaFacebook, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FiClipboard, FiMessageCircle } from 'react-icons/fi';
 import Image from 'next/image';
 
 // Updated dark background (Borderless style)
@@ -14,33 +15,10 @@ const darkBackground = {
 };
 
 export default function Home() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await emailjs.send(
-        'service_jtltcul',    // Your Service ID
-        'template_q46219d',   // Your Template ID
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
-          message: formData.message,
-        },
-        'VW5-ZhcODETeG7o5f'   // Your Public Key
-      );
-      setStatus('Message sent successfully!');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      setStatus('Failed to send message. Please try again later.');
-      console.error('EmailJS Error:', error);
-    }
-  };
+  
 
   return (
     <>
@@ -225,7 +203,7 @@ export default function Home() {
       scrollBehavior: 'smooth',
     }}
   >
-    {/* Flex wrapper that allows horizontal scroll but also centers on wide screens */}
+    {/* Flex wrapper for horizontal scroll and center */}
     <div
       style={{
         display: 'flex',
@@ -233,18 +211,23 @@ export default function Home() {
         gap: '20px',
         padding: '10px',
         width: 'max-content',
-        margin: '0 auto', // ✅ Centers on large screens
+        margin: '0 auto', // centers on large screens
       }}
     >
-      {[{
-        title: 'Reports and Complaints Management System',
-        description:
-          'The Report and Complaint Management System is a web app that helps users submit complaints and automatically sends them to the correct office using machine learning. It analyzes each complaint, predicts the responsible office, and shows similar past complaints to assist in handling the issue. Built with Django, it makes complaint processing faster, more efficient, and better organized.',
-      }, {
-        title: 'Healthcare Translator',
-        description:
-          'The Healthcare Translator is an app that helps patients and doctors understand each other by translating medical terms, symptoms, and instructions into different languages. It makes communication easier in hospitals and clinics, especially when people speak different languages, helping improve care and safety.',
-      }].map((project, index) => (
+      {[
+        {
+          title: 'Reports and Complaints Management System',
+          description:
+            'An ML-powered tool that classifies and routes reports to the right department, improving complaint resolution and accountability in organizations.',
+          icon: <FiClipboard size={40} color="#34D399" style={{ margin: '16px 0' }} />, // teal clipboard icon
+        },
+        {
+          title: 'Healthcare Translator',
+          description:
+            'A translation tool designed for healthcare settings to bridge language gaps between professionals and patients.',
+          icon: <FiMessageCircle size={40} color="#60A5FA" style={{ margin: '16px 0' }} />, // blue chat icon
+        },
+      ].map((project, index) => (
         <Link
           key={index}
           href="/projects"
@@ -253,7 +236,7 @@ export default function Home() {
             color: 'inherit',
             scrollSnapAlign: 'start',
             flex: '0 0 auto',
-            minWidth: '300px', // ✅ Ensures full visibility on scroll
+            minWidth: '300px', // ensures full visibility on scroll
           }}
         >
           <motion.div
@@ -269,25 +252,31 @@ export default function Home() {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
+              alignItems: 'center',
               width: '300px',
               minHeight: '340px',
               height: 'auto',
               boxSizing: 'border-box',
+              textAlign: 'center',
             }}
           >
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 600 }}>
-              {project.title}
-            </h3>
-            <p style={{
-              fontSize: '1rem',
-              marginTop: '10px',
-              color: '#E5E5E5',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              display: '-webkit-box',
-              WebkitLineClamp: 6,
-              WebkitBoxOrient: 'vertical',
-            }}>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 600 }}>{project.title}</h3>
+
+            {/* Icon centered */}
+            {project.icon}
+
+            <p
+              style={{
+                fontSize: '1rem',
+                color: '#E5E5E5',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: 6,
+                WebkitBoxOrient: 'vertical',
+                marginTop: '10px',
+              }}
+            >
               {project.description}
             </p>
           </motion.div>
@@ -334,7 +323,26 @@ export default function Home() {
     </p>
 
     <form
-      onSubmit={handleSubmit}
+      onSubmit={(e) => {
+        e.preventDefault();
+        emailjs.send(
+          'service_jtltcul',
+          'template_q46219d',
+          {
+            from_name: formData.name,
+            reply_to: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+          },
+          'VW5-ZhcODETeG7o5f'
+        ).then(() => {
+          setStatus('Message sent successfully!');
+          setFormData({ name: '', email: '', subject: '', message: '' });
+        }).catch((error) => {
+          setStatus('Failed to send message. Please try again later.');
+          console.error('EmailJS Error:', error);
+        });
+      }}
       style={{
         width: '100%',
         display: 'flex',
@@ -349,7 +357,7 @@ export default function Home() {
         placeholder="Your Name"
         required
         value={formData.name}
-        onChange={handleChange}
+        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         style={{
           padding: '12px 16px',
           borderRadius: '8px',
@@ -365,7 +373,23 @@ export default function Home() {
         placeholder="Your Email"
         required
         value={formData.email}
-        onChange={handleChange}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        style={{
+          padding: '12px 16px',
+          borderRadius: '8px',
+          border: '1px solid #555',
+          background: '#1e1e2f',
+          color: '#fff',
+          fontSize: '1rem',
+        }}
+      />
+      <input
+        type="text"
+        name="subject"
+        placeholder="Subject"
+        required
+        value={formData.subject || ''}
+        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
         style={{
           padding: '12px 16px',
           borderRadius: '8px',
@@ -381,7 +405,7 @@ export default function Home() {
         rows={6}
         required
         value={formData.message}
-        onChange={handleChange}
+        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
         style={{
           padding: '12px 16px',
           borderRadius: '8px',
@@ -439,48 +463,49 @@ export default function Home() {
       }}
     >
       {[
-        {
-          icon: <FaEnvelope size={40} />,
-          url: 'https://mail.google.com/mail/?view=cm&fs=1&to=chazelhonrejas02@gmail.com',
-          color: '#D14836',
-        },
-        {
-          icon: <FaFacebook size={40} />,
-          url: 'https://www.facebook.com/share/1AHhDbCrRa/',
-          color: '#1877F2',
-        },
-        {
-          icon: <FaLinkedin size={40} />,
-          url: 'https://www.linkedin.com/in/chaz-honrejas-33bb3b351/',
-          color: '#0A66C2',
-        },
-        {
-          icon: <FaGithub size={40} />,
-          url: 'https://github.com/chazzzzz01',
-          color: '#fff',
-        },
-      ].map(({ icon, url, color }, idx) => (
-        <motion.a
-          key={idx}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{
-            scale: 1.2,
-            boxShadow: `0 0 12px ${color}`,
-          }}
-          whileTap={{ scale: 0.9 }}
-          style={{
-            color,
-            transition: 'all 0.3s ease',
-          }}
-        >
-          {icon}
-        </motion.a>
-      ))}
+          {
+            icon: <FaEnvelope size={40} />,
+            url: 'mailto:chazelhonrejas02@gmail.com',
+            color: '#D14836',
+          },
+          {
+            icon: <FaFacebook size={40} />,
+            url: 'https://www.facebook.com/share/1AHhDbCrRa/',
+            color: '#1877F2',
+          },
+          {
+            icon: <FaLinkedin size={40} />,
+            url: 'https://www.linkedin.com/in/chaz-honrejas-33bb3b351/',
+            color: '#0A66C2',
+          },
+          {
+            icon: <FaGithub size={40} />,
+            url: 'https://github.com/chazzzzz01',
+            color: '#fff',
+          },
+        ].map(({ icon, url, color }, idx) => (
+          <motion.a
+            key={idx}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{
+              scale: 1.2,
+              boxShadow: `0 0 12px ${color}`,
+            }}
+            whileTap={{ scale: 0.9 }}
+            style={{
+              color,
+              transition: 'all 0.3s ease',
+            }}
+          >
+            {icon}
+          </motion.a>
+        ))}
     </motion.div>
   </motion.div>
 </section>
+
 </>
   )
 }
