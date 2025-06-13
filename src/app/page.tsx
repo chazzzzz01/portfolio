@@ -222,7 +222,7 @@ export default function Home() {
         {
           title: 'Reports and Complaints Management System',
           description:
-            'An ML-powered tool that classifies and routes reports to the right department, improving complaint resolution and accountability in organizations.',
+            'Uses machine learning to classify and route reports to the right office, helping organizations respond faster and solve issues more efficiently.',
           icon: <FiClipboard size={40} color="#34D399" style={{ margin: '16px 0' }} />,
         },
         {

@@ -149,14 +149,14 @@ export default function HealthcareTranslatorPage() {
         <h2><FaUsers /> Users of the System</h2>
         <ul>
           <li><span className="highlight">Healthcare Workers</span> – Can translate medical instructions or questions for patients in their native language.</li>
-          <li><span className="highlight">Patients</span> – Receive accurate translations of languages and have better communication to understand their care.</li>
+          <li><span className="highlight">Patients</span> –Receive accurate translations of languages and have better communication to understand their care.</li>
         </ul>
       </div>
 
       <div className="section">
         <h2><FaTools /> Technologies Used</h2>
         <ul>
-          <li><span className="highlight">Django + Django REST Framework</span> – for the backend API.</li>
+          <li><span className="highlight">Django</span> – for the backend API.</li>
           <li><span className="highlight">GoogleTranslator</span> (via deep translator) – for instant, accurate multilingual translation.</li>
           <li><span className="highlight">OpenAI API</span> – to generate text-to-speech (TTS) audio output for translated text.</li>
           <li><span className="highlight">HTML/CSS (Responsive)</span> – for a clean, mobile-ready frontend template.</li>
