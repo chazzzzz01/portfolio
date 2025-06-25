@@ -65,7 +65,7 @@ export default function Home() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => window.open('/Honrejas, Chazel .pdf', '_blank')}
+            onClick={() => window.open('/Chazel G. Honrejas .pdf', '_blank')}
             style={{
               background: 'linear-gradient(to right, #4F46E5, #6366F1)',
               color: '#fff',
