@@ -5,7 +5,7 @@ import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
 import { FaEnvelope, FaFacebook, FaLinkedin, FaGithub } from 'react-icons/fa';
-import { FiClipboard, FiMessageCircle } from 'react-icons/fi';
+import { FiClipboard, FiMessageCircle, FiMessageSquare } from 'react-icons/fi';
 import Image from 'next/image';
 
 // Updated dark background (Borderless style)
@@ -65,7 +65,7 @@ export default function Home() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => window.open('/Chazel G. Honrejas .pdf', '_blank')}
+            onClick={() => window.open('/Honrejas, Chazel.pdf', '_blank')}
             style={{
               background: 'linear-gradient(to right, #4F46E5, #6366F1)',
               color: '#fff',
@@ -223,13 +223,19 @@ export default function Home() {
           title: 'Reports and Complaints Management System',
           description:
             'Uses machine learning to classify and route reports to the right office, helping organizations respond faster and solve issues more efficiently.',
-          icon: <FiClipboard size={40} color="#34D399" style={{ margin: '16px 0' }} />,
+          icon: <FiClipboard size={40} color="#EF4444" style={{ margin: '16px 0' }} />,
         },
         {
           title: 'Healthcare Translator',
           description:
             'A translation tool designed for healthcare settings to bridge language gaps between professionals and patients.',
           icon: <FiMessageCircle size={40} color="#60A5FA" style={{ margin: '16px 0' }} />,
+        },
+        {
+          title: 'RantSpace',
+          description:
+            'Rantspace is a social platform where people can freely share thoughts, rants, and experiences in a safe, judgment-free space, encouraging real-time interaction and open expression.',
+          icon: <FiMessageSquare size={40} color="#34D399" style={{ margin: '16px 0' }} />,
         },
       ].map((project, index) => (
         <Link

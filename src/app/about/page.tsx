@@ -283,7 +283,7 @@ export default function About() {
       </motion.section>
 
 
-      {/* Experience Section */}
+{/* Experience Section */}
 <motion.section
   initial={{ opacity: 0, y: 20 }}
   whileInView={{ opacity: 1, y: 0 }}
@@ -308,9 +308,53 @@ export default function About() {
     💼 Internship Experience — CVISNET Foundation Inc.
   </h3>
   <p style={{ fontSize: '1.1rem', lineHeight: 1.6 }}>
-    During my internship at <strong>CVISNET Foundation Inc.</strong>, I was introduced to real-world web development practices. I learned how to build websites using WordPress and troubleshoot issues using PHP. I also contributed to some internal projects, where I helped configure site features and polish UI elements. One highlight was creating and presenting a personal WordPress project, which allowed me to apply everything I learned in a practical setting. This experience solidified my passion for development and gave me valuable insights into collaborative work environments.
+    During my internship at <strong>CVISNET Foundation Inc.</strong>, 
+    I was introduced to real-world web development practices. 
+    I learned how to build websites using WordPress and troubleshoot issues using PHP. 
+    I also contributed to some internal projects, where I helped configure site features and polish UI elements. 
+    One highlight was creating and presenting a personal WordPress project, which allowed me to apply everything I learned in a practical setting. 
+    This experience solidified my passion for development and gave me valuable insights into collaborative work environments.
   </p>
 </motion.section>
+
+{/* Experience Section - MCO IT Solution */}
+<motion.section
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8, delay: 0.4 }}
+  style={{
+    maxWidth: '700px',
+    marginBottom: '40px',
+    padding: '20px',
+    borderLeft: '5px solid #007BFF',
+    textAlign: 'left',
+    color: '#FFF',
+  }}
+>
+  <h3
+    style={{
+      fontSize: '1.8rem',
+      marginBottom: '12px',
+      color: '#007BFF',
+    }}
+  >
+    💼 Work Experience — MCO IT Solutions
+  </h3>
+  <p style={{ fontSize: '1.1rem', lineHeight: 1.6 }}>
+  At <strong>MCO IT Solution</strong>, I worked as a <strong>Full Stack Developer</strong>, 
+  where I contributed to both <strong>frontend and backend development</strong> of web applications 
+  using <strong>Laravel, Vue.js, Tailwind CSS and etc.</strong>. 
+  My responsibilities included implementing new features, fixing bugs, and enhancing existing systems 
+  to improve overall performance and user experience. 
+  I also collaborated with the <strong>design and marketing teams</strong> when required, 
+  ensuring that technical solutions aligned with both visual design standards and business goals. 
+  This role strengthened my skills in <strong>full stack development, feature optimization, and cross-team collaboration</strong>, 
+  while giving me valuable experience in delivering reliable and scalable solutions.
+</p>
+
+</motion.section>
+
 
 
       {/* Life & Journey */}

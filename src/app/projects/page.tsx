@@ -9,6 +9,7 @@ import {
   SiTailwindcss,
   SiJavascript,
   SiPostgresql,
+  SiNextdotjs,
 } from 'react-icons/si';
 
 const projects = [
@@ -24,6 +25,13 @@ const projects = [
     description:
       'The Healthcare Translator is a simple web app made to help doctors and patients understand each other when they don’t speak the same language. In hospitals or clinics, language barriers can cause serious problems like wrong diagnoses or confusion about treatments. This tool solves that by quickly translating messages between healthcare workers and patients. It was built using Django for the backend, with Google Translate (through the deep translator library) doing the actual translations. The app also uses OpenAI’s text-to-speech feature, which lets users hear the translated message out loud this is especially helpful for people who can’t read well or don’t know how their language is written.',
     link: '/projects/translator',
+    bgColor: 'bg-gradient-to-br from-purple-500 to-indigo-500',
+  },
+  {
+    title: 'RantSpace',
+    description:
+      'RantSpace is an anonymous social platform created for open and honest self-expression. It offers a safe, judgment-free environment where users can freely share rants, thoughts, and personal experiences without revealing their identity. By encouraging anonymity, RantSpace allows people to speak their minds more openly while fostering genuine conversations, real-time interaction, and community support.',
+    link: '/projects/rantspace',
     bgColor: 'bg-gradient-to-br from-purple-500 to-indigo-500',
   },
 ];
@@ -80,6 +88,7 @@ export default function Projects() {
         <SiTailwindcss size={36} color="#38BDF8" title="Tailwind CSS" />
         <SiJavascript size={36} color="#F7DF1E" title="JavaScript" />
         <SiPostgresql size={36} color="#336791" title="PostgreSQL" />
+         <SiNextdotjs size={36} color="#000000" title="Next.js" />
       </div>
 
       <div
